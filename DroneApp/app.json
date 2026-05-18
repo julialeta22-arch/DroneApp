@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Drone Controller",
+    "slug": "drone-controller",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0A0F1E"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Need Bluetooth to connect to drone",
+        "NSBluetoothPeripheralUsageDescription": "Need Bluetooth to connect to drone"
+      }
+    },
+    "android": {
+      "package": "com.drone.controller",
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0F1E"
+      },
+      "permissions": [
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "BLUETOOTH_CONNECT",
+        "BLUETOOTH_SCAN",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      "@config-plugins/react-native-ble-plx"
+    ]
+  }
+}
