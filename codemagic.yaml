@@ -9,13 +9,29 @@ workflows:
         EXPO_TOKEN: "yIZ1UmdY6PZKxvmQgsicoZRmDhMkr5lvsUmJB5j-"
         EXPO_NO_DOTENV: "1"
     scripts:
+      - name: Find project root
+        script: |
+          echo "Build dir: $CM_BUILD_DIR"
+          ls -la $CM_BUILD_DIR
+          PROJECT_ROOT=$CM_BUILD_DIR
+          if [ -d "$CM_BUILD_DIR/DroneApp" ]; then
+            PROJECT_ROOT=$CM_BUILD_DIR/DroneApp
+          fi
+          echo "Project root: $PROJECT_ROOT"
+          echo "PROJECT_ROOT=$PROJECT_ROOT" >> $CM_ENV
       - name: Install dependencies
-        script: npm install --legacy-peer-deps
+        script: |
+          cd $PROJECT_ROOT
+          npm install --legacy-peer-deps
       - name: Install EAS CLI
         script: npm install -g eas-cli
+      - name: Initialize EAS project
+        script: |
+          cd $PROJECT_ROOT
+          eas init --force --non-interactive
       - name: Build Android APK with EAS
         script: |
-          cd $CM_BUILD_DIR
-          npx eas-cli build --platform android --profile preview --non-interactive --no-wait
+          cd $PROJECT_ROOT
+          npx eas-cli build --platform android --profile preview --non-interactive
     artifacts:
-      - build/**/*.apk
+      - "**/*.apk"
