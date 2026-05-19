@@ -1,0 +1,30 @@
+name: EAS Build Setup and APK Build
+on: workflow_dispatch # Позволяет запускать процесс вручную
+
+jobs:
+  setup-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Скачивание кода из репозитория
+        uses: actions/checkout@v4
+
+      - name: 2. Установка Node.js (среда для работы JavaScript)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 3. Установка EAS CLI (инструмент сборки от Expo)
+        run: npm install -g eas-cli
+
+      - name: 4. Установка зависимостей вашего проекта
+        run: npm install --legacy-peer-deps
+
+      - name: 5. Инициализация EAS проекта (это то, что не получалось раньше)
+        run: npx eas-cli init --force --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }} # Токен для авторизации
+
+      - name: 6. Сборка Android APK
+        run: npx eas-cli build --platform android --profile preview --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
