@@ -14,6 +14,7 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.drone.controller",
       "infoPlist": {
         "NSBluetoothAlwaysUsageDescription": "Need Bluetooth to connect to drone",
         "NSBluetoothPeripheralUsageDescription": "Need Bluetooth to connect to drone"
@@ -21,6 +22,7 @@
     },
     "android": {
       "package": "com.drone.controller",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0A0F1E"
       },
@@ -34,6 +36,11 @@
     },
     "plugins": [
       "@config-plugins/react-native-ble-plx"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
   }
 }
