@@ -7,7 +7,7 @@
     "preview": {
       "android": {
         "buildType": "apk",
-        "credentialsSource": "remote"
+        "credentialsSource": "local"
       }
     }
   }
