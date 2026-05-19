@@ -11,24 +11,18 @@ workflows:
     scripts:
       - name: Find project root
         script: |
-          echo "Build dir: $CM_BUILD_DIR"
-          ls -la $CM_BUILD_DIR
           PROJECT_ROOT=$CM_BUILD_DIR
           if [ -d "$CM_BUILD_DIR/DroneApp" ]; then
             PROJECT_ROOT=$CM_BUILD_DIR/DroneApp
           fi
-          echo "Project root: $PROJECT_ROOT"
           echo "PROJECT_ROOT=$PROJECT_ROOT" >> $CM_ENV
+          echo "Project root: $PROJECT_ROOT"
       - name: Install dependencies
         script: |
           cd $PROJECT_ROOT
           npm install --legacy-peer-deps
       - name: Install EAS CLI
         script: npm install -g eas-cli
-      - name: Initialize EAS project
-        script: |
-          cd $PROJECT_ROOT
-          eas init --force --non-interactive
       - name: Build Android APK with EAS
         script: |
           cd $PROJECT_ROOT
