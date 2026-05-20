@@ -19,12 +19,7 @@ jobs:
       - name: 4. Установка зависимостей вашего проекта
         run: npm install --legacy-peer-deps
 
-      - name: 5. Инициализация EAS проекта (это то, что не получалось раньше)
-        run: npx eas-cli init --force --non-interactive
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }} # Токен для авторизации
-
-      - name: 6. Сборка Android APK
+      - name: 5. Сборка Android APK
         run: npx eas-cli build --platform android --profile preview --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
