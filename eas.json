@@ -1,4 +1,3 @@
-cat > eas.json << 'EOF'
 {
   "cli": {
     "version": ">= 5.9.1",
@@ -13,4 +12,3 @@ cat > eas.json << 'EOF'
     }
   }
 }
-EOF
