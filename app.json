@@ -36,6 +36,11 @@
     },
     "plugins": [
       "@config-plugins/react-native-ble-plx"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2c8eb3d6-f66d-456e-b311-1aaaf34a49dd"
+      }
+    }
   }
 }
