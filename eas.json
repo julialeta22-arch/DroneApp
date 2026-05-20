@@ -13,3 +13,4 @@ cat > eas.json << 'EOF'
     }
   }
 }
+EOF
